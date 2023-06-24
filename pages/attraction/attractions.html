@@ -20,7 +20,7 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="../../css/vertical-layout-light/style.css" />
-    <link rel="stylesheet" href="./hotel.css" />
+    <!-- <link rel="stylesheet" href="./attraction.css" /> -->
     <!-- endinject -->
     <link rel="shortcut icon" href="../../images/favicon.png" />
     <link
@@ -505,7 +505,7 @@
               </div>
             </li>
 
-            <li class="nav-item active">
+            <li class="nav-item">
               <a
                 class="nav-link"
                 data-toggle="collapse"
@@ -520,7 +520,7 @@
               <div class="collapse" id="hotels">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="#">hotels</a>
+                    <a class="nav-link" href="./../hotels/hotel.html">hotels</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="./../hotels/createHotel.html"
@@ -530,7 +530,7 @@
                 </ul>
               </div>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a
                 class="nav-link"
                 data-toggle="collapse"
@@ -704,20 +704,24 @@
         </nav>
 
         <div class="" style="height: 100%; width: 100%">
+          <div class="row mt-3">
+            <div class="col-md-6"></div>
+          </div>
+
           <!-- ////////////////////////// -->
 
-          <!-- ///////////////////////////////////// -->
           <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
                 <div class="table-responsive">
                   <div class="col-md-6">
                     <div
-                      class="form-inline dataTables_filter d-flex flex-row justify-content-between w-100"
+                      class="form-inline dataTables_filter d-flex flex-row justify-content-between"
                       id="hotelTable_filter"
                     >
+
                       <label class="m-4" for="exampleFormControlSelect1"
-                        >filter by</label
+                      >filter by</label
                       >
                       <select class="form-control" id="FormControlSelect1">
                         <option>published</option>
@@ -725,22 +729,24 @@
                         <option>family and couples</option>
                         <option>couples only</option>
                       </select>
-
-                      <a  href="./../hotels/createHotel.html"
+                    <a
+                    class="nav-link"
+                      href="./../attraction/addAttraction.html"
                       >
-                      <button class="addNewHotel btn btn-success border border-success" >Add new hotel</button>
-                    </a>
+                      <button class="addNewAttraction btn btn-success border border-success">
+                      Add new attraction
+                    </button>
+                  </a>
                     </div>
                   </div>
 
-                  <table class="table table-striped" id="hotelTable">
+                  <table class="table table-striped" id="attractionTable">
                     <thead>
                       <tr>
-                        <th class="d-none">Id</th>
+                        <th class="d-none">id</th>
                         <th>Img</th>
-                        <th>Hotel name</th>
-                        <th>City</th>
-                        <th>url</th>
+                        <th>Attraction name</th>
+                        <th>Attraction country</th>
                         <th>status</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -748,48 +754,45 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="py-1 d-none">
+                        <td class="d-none">
                           <p>id</p>
                         </td>
                         <td>
-                          <!-- class="tessst" style="display:none" -->
                           <img src="../../images/faces/face1.jpg" alt="image" />
                         </td>
 
-                        <td class="searchable">Hotel name</td>
-                        <td class="searchable">Hotel city</td>
-
+                        <td>attraction name</td>
+                        <td>attraction country</td>
                         <td>
-                          <a style="color: white" href="">
-                            <div class="btn light-green green-shadow">View</div>
-                          </a>
-                        </td>
-
-                        <td>
-                          <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p>
-                          <!-- <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p> -->
+                          <div class="d-flex">
+                            <p
+                              class="text-center text-success border border-success rounded-lg p-1"
+                              style="min-width: 80px"
+                            >
+                              published
+                            </p>
+                          </div>
+                          <!-- <div class="d-flex w-75">
+                            <p
+                              class="text-center text-danger border border-danger rounded-lg p-1"
+                              style="min-width: 80px;"
+                            >
+                              drafted
+                            </p>
+                          </div> -->
                         </td>
                         <td>
                           <button
                             type="button"
-                            class="btn btn-info btn-sm rounded-sm p-2 pl-3 pr-3"
+                            class="btn btn-info btn-sm rounded-lg p-2 pl-3 pr-3"
                           >
                             Edit
                           </button>
                         </td>
-
                         <td>
                           <button
                             type="button"
-                            class="btn btn-danger btn-sm rounded-sm p-2 pl-3 pr-3"
+                            class="btn btn-danger btn-sm rounded-sm mt-2 p-2 pl-3 pr-3"
                             onclick="confirmDelete()"
                           >
                             Delete
@@ -797,48 +800,45 @@
                         </td>
                       </tr>
                       <tr>
-                        <td class="py-1 d-none">
+                        <td class="d-none">
                           <p>id</p>
                         </td>
                         <td>
-                          <!-- class="tessst" style="display:none" -->
                           <img src="../../images/faces/face1.jpg" alt="image" />
                         </td>
 
-                        <td class="searchable">Hotel name</td>
-                        <td class="searchable">Hotel city</td>
-
+                        <td>attraction name</td>
+                        <td>attraction country</td>
                         <td>
-                          <a style="color: white" href="">
-                            <div class="btn light-green green-shadow">View</div>
-                          </a>
-                        </td>
-
-                        <td>
-                          <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p>
-                          <!-- <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p> -->
+                          <div class="d-flex">
+                            <p
+                              class="text-center text-success border border-success rounded-lg p-1"
+                              style="min-width: 80px"
+                            >
+                              published
+                            </p>
+                          </div>
+                          <!-- <div class="d-flex w-75">
+                            <p
+                              class="text-center text-danger border border-danger rounded-lg p-1"
+                              style="min-width: 80px;"
+                            >
+                              drafted
+                            </p>
+                          </div> -->
                         </td>
                         <td>
                           <button
                             type="button"
-                            class="btn btn-info btn-sm rounded-sm p-2 pl-3 pr-3"
+                            class="btn btn-info btn-sm rounded-lg p-2 pl-3 pr-3"
                           >
                             Edit
                           </button>
                         </td>
-
                         <td>
                           <button
                             type="button"
-                            class="btn btn-danger btn-sm rounded-sm p-2 pl-3 pr-3"
+                            class="btn btn-danger btn-sm rounded-sm mt-2 p-2 pl-3 pr-3"
                             onclick="confirmDelete()"
                           >
                             Delete
@@ -846,48 +846,45 @@
                         </td>
                       </tr>
                       <tr>
-                        <td class="py-1 d-none">
+                        <td class="d-none">
                           <p>id</p>
                         </td>
                         <td>
-                          <!-- class="tessst" style="display:none" -->
                           <img src="../../images/faces/face1.jpg" alt="image" />
                         </td>
 
-                        <td class="searchable">Hotel name</td>
-                        <td class="searchable">Hotel city</td>
-
+                        <td>attraction name</td>
+                        <td>attraction country</td>
                         <td>
-                          <a style="color: white" href="">
-                            <div class="btn light-green green-shadow">View</div>
-                          </a>
-                        </td>
-
-                        <td>
-                          <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p>
-                          <!-- <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p> -->
+                          <div class="d-flex">
+                            <p
+                              class="text-center text-success border border-success rounded-lg p-1"
+                              style="min-width: 80px"
+                            >
+                              published
+                            </p>
+                          </div>
+                          <!-- <div class="d-flex w-75">
+                            <p
+                              class="text-center text-danger border border-danger rounded-lg p-1"
+                              style="min-width: 80px;"
+                            >
+                              drafted
+                            </p>
+                          </div> -->
                         </td>
                         <td>
                           <button
                             type="button"
-                            class="btn btn-info btn-sm rounded-sm p-2 pl-3 pr-3"
+                            class="btn btn-info btn-sm rounded-lg p-2 pl-3 pr-3"
                           >
                             Edit
                           </button>
                         </td>
-
                         <td>
                           <button
                             type="button"
-                            class="btn btn-danger btn-sm rounded-sm p-2 pl-3 pr-3"
+                            class="btn btn-danger btn-sm rounded-sm mt-2 p-2 pl-3 pr-3"
                             onclick="confirmDelete()"
                           >
                             Delete
@@ -895,48 +892,45 @@
                         </td>
                       </tr>
                       <tr>
-                        <td class="py-1 d-none">
+                        <td class="d-none">
                           <p>id</p>
                         </td>
                         <td>
-                          <!-- class="tessst" style="display:none" -->
                           <img src="../../images/faces/face1.jpg" alt="image" />
                         </td>
 
-                        <td class="searchable">Hotel name</td>
-                        <td class="searchable">Hotel city</td>
-
+                        <td>attraction name</td>
+                        <td>attraction country</td>
                         <td>
-                          <a style="color: white" href="">
-                            <div class="btn light-green green-shadow">View</div>
-                          </a>
-                        </td>
-
-                        <td>
-                          <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p>
-                          <!-- <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p> -->
+                          <div class="d-flex">
+                            <!-- <p
+                              class="text-center text-success border border-success rounded-lg p-1"
+                              style="min-width: 80px"
+                            >
+                              published
+                            </p> -->
+                          </div>
+                          <div class="d-flex w-75">
+                            <p
+                              class="text-center text-danger border border-danger rounded-lg p-1"
+                              style="min-width: 80px"
+                            >
+                              drafted
+                            </p>
+                          </div>
                         </td>
                         <td>
                           <button
                             type="button"
-                            class="btn btn-info btn-sm rounded-sm p-2 pl-3 pr-3"
+                            class="btn btn-info btn-sm rounded-lg p-2 pl-3 pr-3"
                           >
                             Edit
                           </button>
                         </td>
-
                         <td>
                           <button
                             type="button"
-                            class="btn btn-danger btn-sm rounded-sm p-2 pl-3 pr-3"
+                            class="btn btn-danger btn-sm rounded-sm mt-2 p-2 pl-3 pr-3"
                             onclick="confirmDelete()"
                           >
                             Delete
@@ -944,293 +938,45 @@
                         </td>
                       </tr>
                       <tr>
-                        <td class="py-1 d-none">
+                        <td class="d-none">
                           <p>id</p>
                         </td>
                         <td>
-                          <!-- class="tessst" style="display:none" -->
                           <img src="../../images/faces/face1.jpg" alt="image" />
                         </td>
 
-                        <td class="searchable">Hotel name</td>
-                        <td class="searchable">Hotel city</td>
-
+                        <td>attraction name</td>
+                        <td>attraction country</td>
                         <td>
-                          <a style="color: white" href="">
-                            <div class="btn light-green green-shadow">View</div>
-                          </a>
-                        </td>
-
-                        <td>
-                          <p
-                          class="text-center text-danger border border-danger rounded-lg"
-                        >
-                          drafted
-                        </p>
-                          <!-- <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p> -->
+                          <!-- <div class="d-flex">
+                            <p
+                              class="text-center text-success border border-success rounded-lg p-1"
+                              style="min-width: 80px"
+                            >
+                              published
+                            </p>
+                          </div> -->
+                          <div class="d-flex w-75">
+                            <p
+                              class="text-center text-danger border border-danger rounded-lg p-1"
+                              style="min-width: 80px"
+                            >
+                              drafted
+                            </p>
+                          </div>
                         </td>
                         <td>
                           <button
                             type="button"
-                            class="btn btn-info btn-sm rounded-sm p-2 pl-3 pr-3"
+                            class="btn btn-info btn-sm rounded-lg p-2 pl-3 pr-3"
                           >
                             Edit
                           </button>
                         </td>
-
                         <td>
                           <button
                             type="button"
-                            class="btn btn-danger btn-sm rounded-sm p-2 pl-3 pr-3"
-                            onclick="confirmDelete()"
-                          >
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-1 d-none">
-                          <p>id</p>
-                        </td>
-                        <td>
-                          <!-- class="tessst" style="display:none" -->
-                          <img src="../../images/faces/face1.jpg" alt="image" />
-                        </td>
-
-                        <td class="searchable">Hotel name</td>
-                        <td class="searchable">Hotel city</td>
-
-                        <td>
-                          <a style="color: white" href="">
-                            <div class="btn light-green green-shadow">View</div>
-                          </a>
-                        </td>
-
-                        <td>
-                          <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p>
-                          <!-- <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p> -->
-                        </td>
-                        <td>
-                          <button
-                            type="button"
-                            class="btn btn-info btn-sm rounded-sm p-2 pl-3 pr-3"
-                          >
-                            Edit
-                          </button>
-                        </td>
-
-                        <td>
-                          <button
-                            type="button"
-                            class="btn btn-danger btn-sm rounded-sm p-2 pl-3 pr-3"
-                            onclick="confirmDelete()"
-                          >
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-1 d-none">
-                          <p>id</p>
-                        </td>
-                        <td>
-                          <!-- class="tessst" style="display:none" -->
-                          <img src="../../images/faces/face1.jpg" alt="image" />
-                        </td>
-
-                        <td class="searchable">Hotel name</td>
-                        <td class="searchable">Hotel city</td>
-
-                        <td>
-                          <a style="color: white" href="">
-                            <div class="btn light-green green-shadow">View</div>
-                          </a>
-                        </td>
-
-                        <td>
-                          <p
-                            class="text-center text-danger border border-danger rounded-lg"
-                          >
-                            drafted
-                          </p>
-                          <!-- <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p> -->
-                        </td>
-                        <td>
-                          <button
-                            type="button"
-                            class="btn btn-info btn-sm rounded-sm p-2 pl-3 pr-3"
-                          >
-                            Edit
-                          </button>
-                        </td>
-
-                        <td>
-                          <button
-                            type="button"
-                            class="btn btn-danger btn-sm rounded-sm p-2 pl-3 pr-3"
-                            onclick="confirmDelete()"
-                          >
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-1 d-none">
-                          <p>id</p>
-                        </td>
-                        <td>
-                          <!-- class="tessst" style="display:none" -->
-                          <img src="../../images/faces/face1.jpg" alt="image" />
-                        </td>
-
-                        <td class="searchable">Hotel name</td>
-                        <td class="searchable">Hotel city</td>
-
-                        <td>
-                          <a style="color: white" href="">
-                            <div class="btn light-green green-shadow">View</div>
-                          </a>
-                        </td>
-
-                        <td>
-                          <!-- <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p> -->
-                          <p
-                            class="text-center text-danger border border-danger rounded-lg"
-                          >
-                            drafted
-                          </p>
-                        </td>
-                        <td>
-                          <button
-                            type="button"
-                            class="btn btn-info btn-sm rounded-sm p-2 pl-3 pr-3"
-                          >
-                            Edit
-                          </button>
-                        </td>
-
-                        <td>
-                          <button
-                            type="button"
-                            class="btn btn-danger btn-sm rounded-sm p-2 pl-3 pr-3"
-                            onclick="confirmDelete()"
-                          >
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-1 d-none">
-                          <p>id</p>
-                        </td>
-                        <td>
-                          <!-- class="tessst" style="display:none" -->
-                          <img src="../../images/faces/face1.jpg" alt="image" />
-                        </td>
-
-                        <td class="searchable">Hotel name</td>
-                        <td class="searchable">Hotel city</td>
-
-                        <td>
-                          <a style="color: white" href="">
-                            <div class="btn light-green green-shadow">View</div>
-                          </a>
-                        </td>
-
-                        <td>
-                          <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p>
-                          <!-- <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p> -->
-                        </td>
-                        <td>
-                          <button
-                            type="button"
-                            class="btn btn-info btn-sm rounded-sm p-2 pl-3 pr-3"
-                          >
-                            Edit
-                          </button>
-                        </td>
-
-                        <td>
-                          <button
-                            type="button"
-                            class="btn btn-danger btn-sm rounded-sm p-2 pl-3 pr-3"
-                            onclick="confirmDelete()"
-                          >
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-1 d-none">
-                          <p>id</p>
-                        </td>
-                        <td>
-                          <!-- class="tessst" style="display:none" -->
-                          <img src="../../images/faces/face1.jpg" alt="image" />
-                        </td>
-
-                        <td class="searchable">Hotel name</td>
-                        <td class="searchable">Hotel city</td>
-
-                        <td>
-                          <a style="color: white" href="">
-                            <div class="btn light-green green-shadow">View</div>
-                          </a>
-                        </td>
-
-                        <td>
-                          <!-- <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p> -->
-                          <p
-                            class="text-center text-success border border-success rounded-lg"
-                          >
-                            published
-                          </p>
-                        </td>
-                        <td>
-                          <button
-                            type="button"
-                            class="btn btn-info btn-sm rounded-sm p-2 pl-3 pr-3"
-                          >
-                            Edit
-                          </button>
-                        </td>
-
-                        <td>
-                          <button
-                            type="button"
-                            class="btn btn-danger btn-sm rounded-sm p-2 pl-3 pr-3"
+                            class="btn btn-danger btn-sm rounded-sm mt-2 p-2 pl-3 pr-3"
                             onclick="confirmDelete()"
                           >
                             Delete
@@ -1247,77 +993,9 @@
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- partial -->
-        <!-- <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Line chart</h4>
-                  <canvas id="lineChart"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Bar chart</h4>
-                  <canvas id="barChart"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Area chart</h4>
-                  <canvas id="areaChart"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Doughnut chart</h4>
-                  <canvas id="doughnutChart"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6 grid-margin grid-margin-lg-0 stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Pie chart</h4>
-                  <canvas id="pieChart"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 grid-margin grid-margin-lg-0 stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Scatter chart</h4>
-                  <canvas id="scatterChart"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!-- ///////////////////////////////////// -->
         </div>
-        content-wrapper ends -->
-        <!-- partial:../../partials/_footer.html -->
-        <!-- <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-          </div>
-        </footer> -->
-        <!-- partial -->
-        <!-- </div> -->
-        <!-- main-panel ends -->
 
         <!-- ////////////////////// -->
       </div>
@@ -1341,7 +1019,11 @@
     <script src="../../js/chart.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
-    <script src="./hotel.js"></script>
+    <!-- <script src="./attraction.js"></script> -->
+    <script>
+      $(document).ready(function () {
+    var dataTable = $("#attractionTable").DataTable();})  
+    </script>
     <!-- End custom js for this page-->
   </body>
 </html>
