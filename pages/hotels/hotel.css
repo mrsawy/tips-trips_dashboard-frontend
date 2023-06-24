@@ -1,0 +1,243 @@
+/* grouped css attributes via type */
+body {
+  font-family: "Lato", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  background: #fff;
+}
+*{
+  transition: all 0.3s;
+}
+
+/* hotel cards */
+
+.search-container {
+  color: rgb(90, 88, 88);
+  background: #f4f2f2;
+}
+
+.search-card-result {
+  box-shadow: 0px 1px 4px rgba(41, 51, 57, 0.5);
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+  background-color: #fff;
+}
+.search-card-result img {
+  height: 190px;
+}
+.search-card-result h5 {
+  font-style: 1.1rem;
+  font-weight: 700;
+}
+.search-card-result p {
+  font-size: 0.9rem;
+}
+
+.search-card-result .more-offers p {
+  margin-bottom: 0.3rem;
+}
+
+.more-offers .additional {
+  padding-top: 0.2rem;
+  font-weight: 700;
+}
+
+.fa.checked {
+  color: orange;
+}
+
+.map-container-btn {
+  height: 100px;
+
+  box-shadow: 0px 1px 4px rgba(41, 51, 57, 0.5);
+  background-color: wheat;
+}
+
+.map-container-btn .btn {
+  margin-top: 30px;
+}
+
+.filter-card {
+  padding: 0;
+  background: #fff;
+  color: black;
+}
+
+.filter-card h5 {
+  margin: 10px 0;
+  padding: 1rem;
+
+  box-shadow: 0px 1px 4px rgba(41, 51, 57, 0.5);
+  color: #000;
+}
+.filter-card form {
+  box-shadow: 0px 1px 4px rgba(41, 51, 57, 0.5);
+  padding: 0.5rem 2rem;
+}
+.map-btn {
+  background-color: #fff !important;
+}
+
+/* SOCIAL ICONS.CSS */
+
+.nav .fa {
+  margin: 5px 2px;
+  padding: 20px;
+
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3b5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55acee;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #da4453; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #89216b,
+    #da4453
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #89216b,
+    #da4453
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+}
+
+.fa-pinterest {
+  background: #cb2027;
+  color: white;
+}
+
+.fa-snapchat-ghost {
+  background: #fffc00;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+/* //////////////////////////////////////////// */
+
+.green-shadow {
+  box-shadow: 0px 6px 4px rgba(132, 214, 164, 0.5);
+}
+
+.light-green {
+  background-color: #4ad68e;
+}
+
+td > a > .btn.light-green.green-shadow:hover {
+  background-color: #74d9a5;
+}
+
+
+/* /////////////////////// */
+
+.pagination {
+  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination button {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  background-color: rgb(255, 255, 255);
+  border: 3px solid grey;
+  margin: 4px 4px;
+  border-radius: 5px;
+
+}
+
+.pagination button.active {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination button:hover:not(.active) {
+  background-color: #8bc48d;
+  border-radius: 5px;
+}
+.pagination button:hover,.btnHoverGreen:hover {
+  background-color: #8bc48d;
+  color: rgb(255, 253, 253);
+}
+
+
+/* .btnHoverGreen */
+
+*{
+  margin: 0;
+  padding: 0;
+}
+.rate {
+  float: left;
+  height: 46px;
+  padding: 0 10px;
+}
+.rate:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+}
+.rate:not(:checked) > label {
+  float:right;
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:30px;
+  color:#ccc;
+}
+.rate:not(:checked) > label:before {
+  content: '★ ';
+}
+.rate > input:checked ~ label {
+  color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
+
+/* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+
