@@ -20,6 +20,7 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="../../css/vertical-layout-light/style.css" />
+    <!-- <link rel="stylesheet" href="./attraction.css" /> -->
     <!-- endinject -->
     <link rel="shortcut icon" href="../../images/favicon.png" />
     <link
@@ -27,71 +28,266 @@
       type="text/css"
       href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"
     />
+
+    <style>
+      /* CodePen demo */
+
+      .big {
+        font-size: 0.9em;
+        box-shadow: none;
+      }
+      .square {
+        width: 0.7em;
+        height: 0.7em;
+        margin: 0.5em;
+        display: inline-block;
+      }
+
+      /* Custom dropdown */
+      .custom-dropdown {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 10px; /* demo only */
+      }
+
+      .custom-dropdown select {
+        background-color: #3fb79f;
+        color: #fff;
+        font-size: inherit;
+        padding: 0.5em;
+        padding-right: 2.5em;
+        border: 0;
+        margin: 0;
+        border-radius: 13px;
+        text-indent: 0.01px;
+        text-overflow: "";
+        -webkit-appearance: button; /* hide default arrow in chrome OSX */
+      }
+
+      .custom-dropdown::before,
+      .custom-dropdown::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .btnHoverGreen {
+        transition: all 0.3s;
+      }
+      .btnHoverGreen:hover {
+        background-color: #3fb79f;
+
+        color: #fff;
+      }
+      .btnHoverGreen:hover span {
+        color: #fff;
+      }
+
+      .dropbtn {
+        background-color: #3fb79f;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .dropbtn:hover       {
+        background-color: #359481;
+      }
+
+      #myInput {
+        box-sizing: border-box;
+        background-image: url("searchicon.png");
+        background-position: 14px 12px;
+        background-repeat: no-repeat;
+        font-size: 16px;
+        padding: 14px 20px 12px 45px;
+        border: none;
+        border-bottom: 1px solid #ddd;
+      }
+
+      #myInput:focus {
+        outline: 3px solid #ddd;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f6f6f6;
+        min-width: 230px;
+        overflow: auto;
+        border: 1px solid #ddd;
+        z-index: 1;
+      }
+
+      .dropdown-content a,
+      .dropdown-content p {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+      }
+
+      .dropdown a:hover,
+      .dropdown p:hover {
+        background-color: #ddd;
+      }
+
+      .show {
+        display: block;
+      }
+
+      /* ///// */
+      @supports (-webkit-appearance: none) or (-moz-appearance: none) {
+        input[type="checkbox"],
+        input[type="radio"] {
+          --active: #275efe;
+          --active-inner: #fff;
+          --focus: 2px rgba(39, 94, 254, 0.3);
+          --border: #bbc1e1;
+          --border-hover: #275efe;
+          --background: #fff;
+          --disabled: #f6f8ff;
+          --disabled-inner: #e1e6f9;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          height: 21px;
+          outline: none;
+          display: inline-block;
+          vertical-align: top;
+          position: relative;
+          margin: 0;
+          cursor: pointer;
+          border: 1px solid var(--bc, var(--border));
+          background: var(--b, var(--background));
+          transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+        }
+        input[type="checkbox"]:after,
+        input[type="radio"]:after {
+          content: "";
+          display: block;
+          left: 0;
+          top: 0;
+          position: absolute;
+          transition: transform var(--d-t, 0.3s) var(--d-t-e, ease),
+            opacity var(--d-o, 0.2s);
+        }
+        input[type="checkbox"]:checked,
+        input[type="radio"]:checked {
+          --b: var(--active);
+          --bc: var(--active);
+          --d-o: 0.3s;
+          --d-t: 0.6s;
+          --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+        }
+        input[type="checkbox"]:disabled,
+        input[type="radio"]:disabled {
+          --b: var(--disabled);
+          cursor: not-allowed;
+          opacity: 0.9;
+        }
+        input[type="checkbox"]:disabled:checked,
+        input[type="radio"]:disabled:checked {
+          --b: var(--disabled-inner);
+          --bc: var(--border);
+        }
+        input[type="checkbox"]:disabled + label,
+        input[type="radio"]:disabled + label {
+          cursor: not-allowed;
+        }
+        input[type="checkbox"]:hover:not(:checked):not(:disabled),
+        input[type="radio"]:hover:not(:checked):not(:disabled) {
+          --bc: var(--border-hover);
+        }
+        input[type="checkbox"]:focus,
+        input[type="radio"]:focus {
+          box-shadow: 0 0 0 var(--focus);
+        }
+        input[type="checkbox"]:not(.switch),
+        input[type="radio"]:not(.switch) {
+          width: 21px;
+        }
+        input[type="checkbox"]:not(.switch):after,
+        input[type="radio"]:not(.switch):after {
+          opacity: var(--o, 0);
+        }
+        input[type="checkbox"]:not(.switch):checked,
+        input[type="radio"]:not(.switch):checked {
+          --o: 1;
+        }
+        input[type="checkbox"] + label,
+        input[type="radio"] + label {
+          font-size: 14px;
+          line-height: 21px;
+          display: inline-block;
+          vertical-align: top;
+          cursor: pointer;
+          margin-left: 4px;
+        }
+
+        input[type="checkbox"]:not(.switch) {
+          border-radius: 7px;
+        }
+        input[type="checkbox"]:not(.switch):after {
+          width: 5px;
+          height: 9px;
+          border: 2px solid var(--active-inner);
+          border-top: 0;
+          border-left: 0;
+          left: 7px;
+          top: 4px;
+          transform: rotate(var(--r, 20deg));
+        }
+        input[type="checkbox"]:not(.switch):checked {
+          --r: 43deg;
+        }
+        input[type="checkbox"].switch {
+          width: 38px;
+          border-radius: 11px;
+        }
+        input[type="checkbox"].switch:after {
+          left: 2px;
+          top: 2px;
+          border-radius: 50%;
+          width: 15px;
+          height: 15px;
+          background: var(--ab, var(--border));
+          transform: translateX(var(--x, 0));
+        }
+        input[type="checkbox"].switch:checked {
+          --ab: var(--active-inner);
+          --x: 17px;
+        }
+        input[type="checkbox"].switch:disabled:not(:checked):after {
+          opacity: 0.6;
+        }
+
+        input[type="radio"] {
+          border-radius: 50%;
+        }
+        input[type="radio"]:after {
+          width: 19px;
+          height: 19px;
+          border-radius: 50%;
+          background: var(--active-inner);
+          opacity: 0;
+          transform: scale(var(--s, 0.7));
+        }
+        input[type="radio"]:checked {
+          --s: 0.5;
+        }
+      }
+    </style>
   </head>
 
-  <style>
-    /* CodePen demo */
-
-    @media screen and (min-width: 1000px) {
-      .attrDescBtn {
-        transform: translateX(-90px);
-      }
-    }
-
-    .attrDescBtn {
-    }
-
-    .big {
-      font-size: 0.9em;
-      box-shadow: none;
-    }
-    .square {
-      width: 0.7em;
-      height: 0.7em;
-      margin: 0.5em;
-      display: inline-block;
-    }
-
-    /* Custom dropdown */
-    .custom-dropdown {
-      position: relative;
-      display: inline-block;
-      vertical-align: middle;
-      margin: 10px; /* demo only */
-    }
-
-    .custom-dropdown select {
-      background-color: #3fb79f;
-      color: #fff;
-      font-size: inherit;
-      padding: 0.5em;
-      padding-right: 2.5em;
-      border: 0;
-      margin: 0;
-      border-radius: 3px;
-      text-indent: 0.01px;
-      text-overflow: "";
-      -webkit-appearance: button; /* hide default arrow in chrome OSX */
-    }
-
-    .custom-dropdown::before,
-    .custom-dropdown::after {
-      content: "";
-      position: absolute;
-      pointer-events: none;
-    }
-
-    .btnHoverGreen {
-      transition: all 0.3s;
-    }
-    .btnHoverGreen:hover {
-      background-color: #3fb79f;
-      color: #fff;
-    }
-    .btnHoverGreen:hover span {
-      color: #fff;
-    }
-  </style>
   <body>
     <div class="container-scroller">
       <!-- partial:../../partials/_navbar.html -->
@@ -585,28 +781,26 @@
                     <a class="nav-link" href="./../hotels/hotel.html">hotels</a>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href="./../../pages/hotels/createHotel.html"
+                    <a class="nav-link" href="./../hotels/createHotel.html"
                       >add hotel</a
                     >
                   </li>
                 </ul>
               </div>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a
                 class="nav-link"
                 data-toggle="collapse"
                 href="#attractions"
                 aria-expanded="false"
-                aria-controls="attraction"
+                aria-controls="attractions"
               >
                 <i class="icon-bar-graph menu-icon"></i>
                 <span class="menu-title">attractions</span>
                 <i class="menu-arrow"></i>
               </a>
-              <div class="collapse" id="attraction">
+              <div class="collapse" id="attractions">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
                     <a class="nav-link" href="./../attraction/attractions.html"
@@ -618,6 +812,35 @@
                       class="nav-link"
                       href="./../attraction/addAttraction.html"
                       >add attraction</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-toggle="collapse"
+                href="#restaurants"
+                aria-expanded="false"
+                aria-controls="restaurants"
+              >
+                <i class="icon-bar-graph menu-icon"></i>
+                <span class="menu-title">restaurants</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="restaurants">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="./../restaurant/restaurants.html"
+                      >restaurants</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      href="./../restaurant/addRestaurant.html"
+                      >add restaurant</a
                     >
                   </li>
                 </ul>
@@ -767,295 +990,318 @@
           </ul>
         </nav>
 
-        <!-- ///////////////////////////// -->
+        <div class="" style="height: 100%; width: 100%">
+          <div class="row mt-3">
+            <div class="col-md-6"></div>
+          </div>
 
-        <div class="col-12 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Add new Attraction :</h4>
-              <p class="card-description">Attraction data</p>
-              <form class="forms-sample">
-                <label for="exampleInputName1"
-                  >Attraction name
-                  <span class="text-muted small">(English)</span></label
-                >
-                <div class="form-group row name-english">
-                  <div class="d-flex flex-row col-md-10">
-                    <input
-                      type="text"
-                      class="form-control mr-4"
-                      id="exampleInputName1"
-                      placeholder="Name"
-                    />
-                    <button
-                      type="button"
-                      class="text-center text-success border border-success rounded-lg btn btnHoverGreen"
-                      id="addNameDifferentLanguage"
-                    >
-                      <span>+</span>
-                    </button>
-                  </div>
-                </div>
-                <div class="form-group city-english">
-                  <label for="exampleInputEmail3"
-                    >Attraction country <span class="text-muted small"></span
-                  ></label>
-                  <div class="form-group row">
-                    <label for="attraction_country"></label>
-                    <div class="d-flex flex-row">
-                      <div class="container">
-                        <span class="custom-dropdown big">
-                          <select>
-                            <option value="AL">Alabama</option>
-                            <option value="WY">Wyoming</option>
-                            <option value="AM">America</option>
-                            <option value="CA">Canada</option>
-                            <option value="RU">Russia</option>
-                            <option>Egypt</option>
-                            <option>Italy</option>
-                            <option>France</option>
-                            <option>Egypt</option>
-                            <option>Egypt</option>
-                            <option>Egypt</option>
-                            <option>Italy</option>
-                            <option>France</option>
-                            <option value="AL">Alabama</option>
-                            <option value="WY">Wyoming</option>
-                            <option value="AM">America</option>
-                            <option value="CA">Canada</option>
-                            <option value="RU">Russia</option>
-                          </select>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group city-english attr">
-                  <label for="exampleInputEmail3"
-                    >Attraction city
+          <!-- ////////////////////////// -->
+
+          <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Add new Restaurant :</h4>
+                <p class="card-description">Restaurant data</p>
+                <form class="forms-sample">
+                  <label for="exampleInputName1"
+                    >Restaurant name
                     <span class="text-muted small">(English)</span></label
                   >
-                  <div class="form-group row">
+                  <div class="form-group row name-english">
                     <div class="d-flex flex-row col-md-10">
                       <input
                         type="text"
                         class="form-control mr-4"
-                        id="exampleInputEmail3"
-                        placeholder="city"
+                        id="exampleInputName1"
+                        placeholder="Name"
                       />
                       <button
                         type="button"
                         class="text-center text-success border border-success rounded-lg btn btnHoverGreen"
-                        id="addCityByDifferentLanguage"
+                        id="addNameDifferentLanguage"
                       >
                         <span>+</span>
                       </button>
                     </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword4">Ticket URL</label>
-                  <input
-                    type="text"
-                    class="form-control col-10"
-                    placeholder="Ticket URL"
-                  />
-                </div>
-
-                <div class="d-flex flex-column">
-                  <div class="form-row small col-10">
-                    <div class="col">
-                      <label>Child entry price - from:</label>
-                      <input
-                        type="number"
-                        class="form-control"
-                        name="childFrom"
-                      />
-                    </div>
-
-                    <div class="col">
-                      <label>Child entry price - to:</label>
-                      <input
-                        type="number"
-                        class="form-control"
-                        name="childTo"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="form-row small col-10 mt-lg-3">
-                    <div class="col">
-                      <label>Adult entry price - from:</label>
-                      <input
-                        type="number"
-                        class="form-control"
-                        name="adultFrom"
-                      />
-                    </div>
-
-                    <div class="col">
-                      <label>Adult entry price - to:</label>
-                      <input
-                        type="number"
-                        class="form-control"
-                        name="adultTo"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <label class="mt-3">Geo location</label>
-                <div class="form-group row">
-                  <div class="d-flex flex-row col-md-10">
-                    <input
-                      type="text"
-                      class="form-control mr-4"
-                      placeholder="Geo location"
-                    />
-                  </div>
-                </div>
-                <label>Longitude</label>
-                <div class="form-group row">
-                  <div class="d-flex flex-row col-md-10">
-                    <input
-                      type="text"
-                      class="form-control mr-4"
-                      placeholder="Longitude"
-                    />
-                  </div>
-                </div>
-                <label>Latitude</label>
-                <div class="form-group row">
-                  <div class="d-flex flex-row col-md-10">
-                    <input
-                      type="text"
-                      class="form-control mr-4"
-                      placeholder="Latitude"
-                    />
-                  </div>
-                </div>
-                <label for="">Duration of the visit</label>
-                <div class="d-flex flex-column">
-                  <div class="form-row small col-md-10">
-                    <div class="col">
-                      <label>Houres</label>
-                      <input
-                        type="number"
-                        class="form-control"
-                        name="childFrom"
-                      />
-                    </div>
-
-                    <div class="col">
-                      <label>Minutes</label>
-                      <input
-                        type="number"
-                        class="form-control"
-                        name="childTo"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <label for="exampleTextarea1" class="mt-4">Discription</label>
-                <div class="form-group d-flex">
-                  <textarea
-                    class="form-control m-0"
-                    style="width: 70%"
-                    id="exampleTextarea1"
-                    rows="6"
-                  ></textarea>
-                  <!-- <div class="form-group col-md-8"> -->
-                  <!-- </div> -->
-                  <div class="m-auto">
-                    <button
-                      type="button"
-                      class="attrDescBtn text-center text-success border border-success rounded-lg btn btnHoverGreen"
-                      style="height: 80px; width: 80px"
-                      id="addCityByDifferentLanguage"
-                    >
-                      <span>+</span>
-                    </button>
-                  </div>
-                </div>
-
-                <label for="exampleTextarea1" class="mt-4"
-                  >Notes for things to do</label
-                >
-                <div class="form-group d-flex">
-                  <textarea
-                    class="form-control"
-                    style="width: 70%"
-                    id="exampleTextarea1"
-                    rows="6"
-                  ></textarea>
-                  <div class="m-auto">
-                    <button
-                      type="button"
-                      class="attrDescBtn text-center text-success border border-success rounded-lg btn btnHoverGreen"
-                      style="height: 80px; width: 80px"
-                      id="addCityByDifferentLanguage"
-                    >
-                      <span>+</span>
-                    </button>
-                  </div>
-                </div>
-
-                <br />
-                <div class="form-group col-md-10">
-                  <label>Featured image</label>
-                  <input type="file" name="img[]" class="file-upload-default" />
-                  <div class="input-group col-xs-12">
-                    <input
-                      type="text"
-                      class="form-control file-upload-info"
-                      disabled
-                      placeholder="Upload Image"
-                    />
-                    <span class="input-group-append">
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <div class="form-group city-english attr">
+                    <div class="dropdown">
                       <button
-                        class="file-upload-browse btn btn-primary"
                         type="button"
+                        onclick="myFunction(`myDropdownCountry`)"
+                        class="dropbtn bgdropdnptnCountry"
+                        style="border-radius: 10px; min-width:150px;"
                       >
-                        Upload
+                        Choose country
                       </button>
-                    </span>
-                  </div>
-                </div>
+                      <div id="myDropdownCountry" class="dropdown-content">
+                        <input
+                          type="text"
+                          placeholder="Search.."
+                          id="myInputCountry"
+                          onkeyup="filterFunction(`myInputCountry`,`myDropdownCountry`)"
+                        />
 
-                <br />
-                <div class="form-group col-md-10">
-                  <label>Gallery image</label>
-                  <input type="file" name="img[]" class="file-upload-default" />
-                  <div class="input-group col-xs-12">
+                        <!-- put the city name in the <p> and id in <span> -->
+
+                        <p
+                          onclick="onChooseCity(this,`myDropdownCountry`,`.dropbtn.bgdropdnptnCountry`,`COUNTRY_NAME`,`COUNTRY_ID`);"
+                        >
+                          Alabama <span class="d-none">id</span>
+                        </p>
+                        <p
+                          onclick="onChooseCity(this,`myDropdownCountry`,`.dropbtn.bgdropdnptnCountry`,`COUNTRY_NAME`,`COUNTRY_ID`);"
+                        >
+                          Wyoming<span class="d-none">id</span>
+                        </p>
+                        <p
+                          onclick="onChooseCity(this,`myDropdownCountry`,`.dropbtn.bgdropdnptnCountry`,`COUNTRY_NAME`,`COUNTRY_ID`);"
+                        >
+                          America<span class="d-none">id</span>
+                        </p>
+                        <p
+                          onclick="onChooseCity(this,`myDropdownCountry`,`.dropbtn.bgdropdnptnCountry`,`COUNTRY_NAME`,`COUNTRY_ID`);"
+                        >
+                          Canada<span class="d-none">id</span>
+                        </p>
+                        <p
+                          onclick="onChooseCity(this,`myDropdownCountry`,`.dropbtn.bgdropdnptnCountry`,`COUNTRY_NAME`,`COUNTRY_ID`);"
+                        >
+                          Russia<span class="d-none">id</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- when he choose one the city name will be assigned to this input -->
                     <input
+                      id="COUNTRY_NAME"
+                      class="d-none"
                       type="text"
-                      class="form-control file-upload-info"
-                      disabled
-                      placeholder="Gallery Image"
+                      value=""
                     />
-                    <span class="input-group-append">
-                      <button
-                        class="file-upload-browse btn btn-primary"
-                        type="button"
-                      >
-                        Upload
-                      </button>
-                    </span>
+                    <!-- when he choose one the city ID will be assigned to this input -->
+                    <input
+                      id="COUNTRY_ID"
+                      class="d-none"
+                      type="text"
+                      value=""
+                    />
                   </div>
-                </div>
 
-                <button type="submit" class="btn btn-primary mr-2">
-                  publish
-                </button>
-                <button class="btn btn-light btn-facebook">
-                  save as a draft
-                </button>
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
 
-                <button class="btn btn-light">Cancel</button>
-              </form>
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <div class="form-group city-english attr">
+                    <div class="dropdown">
+                      <button
+                        type="button"
+                        onclick="myFunction(`myDropdown`)"
+                        class="dropbtn bgdropdnptnCity"
+                        style="border-radius: 10px; min-width:150px;"
+
+                      >
+                        Choose city
+                      </button>
+                      <div id="myDropdown" class="dropdown-content">
+                        <input
+                          type="text"
+                          placeholder="Search.."
+                          id="myInput"
+                          onkeyup="filterFunction(`myInput`,`myDropdown`)"
+                        />
+
+                        <!-- put the city name in the <p> and id in <span> -->
+                        <p
+                          onclick="onChooseCity(this,`myDropdown`,`.dropbtn.bgdropdnptnCity`,`CITY_NAME`,`CITY_ID`);"
+                        >
+                          Alabama <span class="d-none">id</span>
+                        </p>
+                        <p
+                          onclick="onChooseCity(this,`myDropdown`,`.dropbtn.bgdropdnptnCity`,`CITY_NAME`,`CITY_ID`);"
+                        >
+                          Wyoming<span class="d-none">id</span>
+                        </p>
+                        <p
+                          onclick="onChooseCity(this,`myDropdown`,`.dropbtn.bgdropdnptnCity`,`CITY_NAME`,`CITY_ID`);"
+                        >
+                          America<span class="d-none">id</span>
+                        </p>
+                        <p
+                          onclick="onChooseCity(this,`myDropdown`,`.dropbtn.bgdropdnptnCity`,`CITY_NAME`,`CITY_ID`);"
+                        >
+                          Canada<span class="d-none">id</span>
+                        </p>
+                        <p
+                          onclick="onChooseCity(this,`myDropdown`,`.dropbtn.bgdropdnptnCity`,`CITY_NAME`,`CITY_ID`);"
+                        >
+                          Russia<span class="d-none">id</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- when he choose one the city name will be assigned to this input -->
+                    <input id="CITY_NAME" class="d-none" type="text" value="" />
+                    <!-- when he choose one the city ID will be assigned to this input -->
+                    <input id="CITY_ID" class="d-none" type="text" value="" />
+                  </div>
+
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+                  <!-- //////////////////////////////////////// -->
+
+                  <div class="form-group mt-5">
+                    <ul>
+                      <li style="list-style-type: none">
+                        <label for="s2">Halal :</label>
+                        <input id="s2" type="checkbox" class="switch ml-3" />
+                      </li>
+                    </ul>
+                  </div>
+
+                  <label class="mt-3">Geo location</label>
+                  <div class="form-group row">
+                    <div class="d-flex flex-row col-md-10">
+                      <input
+                        type="text"
+                        class="form-control mr-4"
+                        placeholder="Geo location"
+                      />
+                    </div>
+                  </div>
+                  <label>Longitude</label>
+                  <div class="form-group row">
+                    <div class="d-flex flex-row col-md-10">
+                      <input
+                        type="text"
+                        class="form-control mr-4"
+                        placeholder="Longitude"
+                      />
+                    </div>
+                  </div>
+                  <label>Latitude</label>
+                  <div class="form-group row">
+                    <div class="d-flex flex-row col-md-10">
+                      <input
+                        type="text"
+                        class="form-control mr-4"
+                        placeholder="Latitude"
+                      />
+                    </div>
+                  </div>
+
+                  <label for="exampleTextarea1" class="mt-4"
+                    >Discription<span class="text-muted small"
+                      >(English)</span
+                    ></label
+                  >
+                  <div
+                    class="form-group d-flex flex-row justify-content-lg-start descdiv"
+                  >
+                    <textarea
+                      class="form-control col-10 mr-2"
+                      id="exampleTextarea1"
+                      rows="8"
+                    >
+                    </textarea>
+                    <div class="m-auto">
+                      <button
+                        type="button"
+                        class="text-center text-success border border-success rounded-lg btn btnHoverGreen"
+                        style="height: 70px; width: 70px"
+                        id="addDescByDifferentLanguage"
+                      >
+                        <span>+</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <br />
+                  <div class="form-group col-md-10">
+                    <label>Featured image</label>
+                    <input
+                      type="file"
+                      name="img[]"
+                      class="file-upload-default"
+                    />
+                    <div class="input-group col-xs-12">
+                      <input
+                        type="text"
+                        class="form-control file-upload-info"
+                        disabled
+                        placeholder="Upload Image"
+                      />
+                      <span class="input-group-append">
+                        <button
+                          class="file-upload-browse btn btn-primary"
+                          type="button"
+                        >
+                          Upload
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+
+                  <br />
+                  <div class="form-group col-md-10">
+                    <label>Gallery image</label>
+                    <input
+                      type="file"
+                      name="img[]"
+                      class="file-upload-default"
+                    />
+                    <div class="input-group col-xs-12">
+                      <input
+                        type="text"
+                        class="form-control file-upload-info"
+                        disabled
+                        placeholder="Gallery Image"
+                      />
+                      <span class="input-group-append">
+                        <button
+                          class="file-upload-browse btn btn-primary"
+                          type="button"
+                        >
+                          Upload
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary mr-2">
+                    publish
+                  </button>
+                  <button class="btn btn-light btn-facebook">
+                    save as a draft
+                  </button>
+
+                  <button class="btn btn-light">Cancel</button>
+                </form>
+              </div>
             </div>
           </div>
+
+          <!-- ///////////////////////////////////// -->
         </div>
 
         <!-- ////////////////////// -->
@@ -1079,33 +1325,106 @@
     <!-- Custom js for this page-->
     <script src="../../js/chart.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+    <!-- <script src="./attraction.js"></script> -->
     <script>
       $(document).ready(function () {
-        $("#addNameDifferentLanguage").one("click", function (event) {
-          var newFormGroup =
-            '<label for="exampleInputEmail3">Name <span class="text-muted small">(arabic)</span></label>' +
-            '<div class="form-group row">' +
-            '<div class="d-flex flex-row col-md-10">' +
-            '<input type="text" class="form-control mr-4" placeholder="arabic name">' +
-            "</div>" +
-            "</div>";
-          $(newFormGroup).insertAfter(".form-group.name-english");
-          newFormGroup = ``;
-        });
-
-        $("#addCityByDifferentLanguage").one("click", function (event) {
-          var newFormGroup =
-            '<label for="exampleInputEmail3">Arraction city <span class="text-muted small">(arabic)</span></label>' +
-            '<div class="form-group row">' +
-            '<div class="d-flex flex-row col-md-10">' +
-            '<input type="text" class="form-control mr-4" placeholder="arabic City">' +
-            "</div>" +
-            "</div>";
-          $(newFormGroup).insertAfter(".form-group.city-english.attr");
-        });
+        var dataTable = $("#restaurantTable").DataTable();
       });
+      function confirmDelete() {
+        var result = confirm("Are you sure you want to delete this item?");
+        if (result) {
+          // User clicked "OK" - proceed with the deletion
+          deleteItem();
+        } else {
+          // User clicked "Cancel" - do nothing
+        }
+      }
+
+      function deleteItem() {
+        // Code to delete the item goes here
+        alert("Item deleted successfully!");
+      }
+
+      const addArLang = (buttonId, siblingSelector, content) => {
+        $(`#${buttonId}`).one("click", () => {
+          $(content).insertAfter(`${siblingSelector}`);
+        });
+      };
+
+      const nameArContent = `<label for="exampleInputName1"
+                        >Restaurant name
+                        <span class="text-muted small">(arabic)</span></label
+                      >
+                        <div class="form-group row name-english">
+                          <div class="d-flex flex-row col-md-10">
+                            <input
+                              type="text"
+                              class="form-control mr-4"
+                              id="nameAr"
+                              placeholder="Name"
+                            />
+                          </div>
+                        </div>`;
+
+      var contentDesc = `<label for="exampleTextarea1" class="mt-4"
+                        >Discription<span class="text-muted small"
+                          >(Arabic)</span
+                        ></label
+                      >
+                    <div
+                      class="form-group d-flex flex-row justify-content-lg-start"
+                    >
+                      <textarea
+                        class="form-control col-10"
+                        id="arabicDesc"
+                        rows="8"
+                        >
+                        </textarea>
+                        </div>`;
+
+      addArLang(
+        `addNameDifferentLanguage`,
+        `.form-group.row.name-english`,
+        nameArContent
+      );
+      addArLang(`addDescByDifferentLanguage`, `.descdiv`, contentDesc);
+
+      function myFunction(id) {
+        document.getElementById(id).classList.toggle("show");
+      }
+
+      function filterFunction(input, dropdown) {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById(input);
+        filter = input.value.toUpperCase();
+        div = document.getElementById(dropdown);
+        a = div.getElementsByTagName("p");
+        for (i = 0; i < a.length; i++) {
+          txtValue = a[i].textContent || a[i].innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+          } else {
+            a[i].style.display = "none";
+          }
+        }
+      }
+
+      function onChooseCity(
+        e,
+        dropDownId,
+        btnSelector,
+        hiddenInputName,
+        hiddenInputId
+      ) {
+        const Name = e.textContent.trim().split(` `)[0];
+        const Id = e.textContent.trim().split(` `)[1];
+        document.getElementById(dropDownId).classList.remove("show");
+        document.querySelector(btnSelector).innerHTML = Name;
+        document.querySelector(`#${hiddenInputName}`).value = Name;
+        document.querySelector(`#${hiddenInputId}`).value = Id;
+      }
     </script>
-    <!-- <script src="./attraction.js"></script> -->
     <!-- End custom js for this page-->
   </body>
 </html>
