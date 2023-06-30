@@ -14,15 +14,6 @@
       rel="stylesheet"
       href="../../vendors/ti-icons/css/themify-icons.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.quilljs.com/1.3.6/quill.core.css"
-    />
-
     <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css" />
     <!-- endinject -->
     <!-- Plugin css for this page -->
@@ -32,92 +23,35 @@
     <!-- <link rel="stylesheet" href="./attraction.css" /> -->
     <!-- endinject -->
     <link rel="shortcut icon" href="../../images/favicon.png" />
-
-    <link rel="stylesheet" href="./../../vendors/select2/select2.min.css" />
-    <link
-      rel="stylesheet"
-      href="./../../vendors/select2-bootstrap-theme/select2-bootstrap.min.css"
-    />
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="./../../css/vertical-layout-light/style.css" />
     <link
       rel="stylesheet"
       type="text/css"
       href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"
     />
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
 
-
-
     <style>
-
-
-
-      /* Styling the editor container */
-      #quillEditor {
-        height: 300px;
-        border: 1px solid #ccc;
-        padding: 10px;
+      .dataTables_wrapper .dataTables_length select {
+        height: 33px;
       }
-      .ql-toolbar {
-        background-color: #88cbbe;
-        border: none;
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
-        color: #ccc !important;
-        padding: 15px 0 15px 10px !important;
-      }
-      /* ////////////////////////////////////////////// */
-
-
-
-      .ql-container {
-        resize: both;
-        overflow: auto;
-      }
-      .big {
-        font-size: 0.9em;
-        box-shadow: none;
-      }
-      .square {
-        width: 0.7em;
-        height: 0.7em;
-        margin: 0.5em;
-        display: inline-block;
+      .show-animation {
+        animation-name: appear;
+        /* duration timing-function delay iteration-count direction fill-mode; */
       }
 
-      /* Custom dropdown */
-      .custom-dropdown {
-        position: relative;
-        display: inline-block;
-        vertical-align: middle;
-        margin: 10px; /* demo only */
+      @keyframes appear {
+        0% {
+          transform: scale(0%);
+        }
+        100% {
+          transform: scale(100%);
+        }
       }
 
-      .custom-dropdown select {
-        background-color: #88cbbe;
-        color: #fff;
-        font-size: inherit;
-        padding: 0.5em;
-        padding-right: 2.5em;
-        border: 0;
-        margin: 0;
-        border-radius: 13px;
-        text-indent: 0.01px;
-        text-overflow: "";
-        -webkit-appearance: button;
-      }
-
-      .custom-dropdown::before,
-      .custom-dropdown::after {
-        content: "";
-        position: absolute;
-        pointer-events: none;
-      }
+      /* ///// can be removed  //// */
 
       .btnHoverGreen {
         transition: all 0.3s;
@@ -130,9 +64,8 @@
       .btnHoverGreen:hover span {
         color: #fff;
       }
-
       .dropbtn {
-        background-color: #4abea7;
+        background-color: #3fb79f;
         color: white;
         padding: 16px;
         font-size: 16px;
@@ -195,58 +128,135 @@
         display: block;
       }
 
-      .select2-container--default
-        .select2-selection--single
-        .select2-selection__arrow {
-        right: -50px;
-      }
-
-      .select2-container .select2-selection--single {
-        height: 50px;
-        width: 150px;
-      }
-
-      #mySelect {
-        width: 100%;
-        background-color: #4abea7;
-      }
-      .customDivCountries {
-        background-color: #4abea7;
-        color: white;
-      }
-
-      .customHr {
-        width: 60%;
-        border: none;
-        height: 1px;
-        background-color: rgb(132, 167, 161, 1);
-        box-shadow: 2px 1px 4px rgb(46, 138, 153, 1);
-        margin: 2.5rem auto;
-      }
-      .show-animation {
-        animation-name: appear;
-        /* duration timing-function delay iteration-count direction fill-mode; */
-      }
-
-      @keyframes appear {
-        0% {
-          transform: scale(0%);
+      @supports (-webkit-appearance: none) or (-moz-appearance: none) {
+        input[type="checkbox"] {
+          --active: #359481;
+          --active-inner: #fff;
+          --focus: 2px 359481;
+          --border: #b2bfbc;
+          --border-hover: #25675a;
+          --background: #fff;
+          --disabled: #f6f8ff;
+          --disabled-inner: #e1e6f9;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          height: 21px;
+          outline: none;
+          display: inline-block;
+          vertical-align: top;
+          position: relative;
+          margin: 0;
+          cursor: pointer;
+          border: 1px solid var(--bc, var(--border));
+          background: var(--b, var(--background));
+          transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
         }
-        100% {
-          transform: scale(100%);
+        input[type="checkbox"]:after {
+          content: "";
+          display: block;
+          left: 0;
+          top: 0;
+          position: absolute;
+          transition: transform var(--d-t, 0.3s) var(--d-t-e, ease),
+            opacity var(--d-o, 0.2s);
+        }
+        input[type="checkbox"]:checked {
+          --b: var(--active);
+          --bc: var(--active);
+          --d-o: 0.3s;
+          --d-t: 0.6s;
+          --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+        }
+        input[type="checkbox"]:disabled {
+          --b: var(--disabled);
+          cursor: not-allowed;
+          opacity: 0.9;
+        }
+        input[type="checkbox"]:disabled:checked {
+          --b: var(--disabled-inner);
+          --bc: var(--border);
+        }
+        input[type="checkbox"]:disabled + label {
+          cursor: not-allowed;
+        }
+        input[type="checkbox"]:hover:not(:checked):not(:disabled) {
+          --bc: var(--border-hover);
+        }
+        input[type="checkbox"]:focus {
+          box-shadow: 0 0 0 var(--focus);
+        }
+        input[type="checkbox"]:not(.switch),
+        input[type="radio"]:not(.switch) {
+          width: 21px;
+        }
+        input[type="checkbox"]:not(.switch):after {
+          opacity: var(--o, 0);
+        }
+        input[type="checkbox"]:not(.switch):checked {
+          --o: 1;
+        }
+        input[type="checkbox"] + label {
+          font-size: 14px;
+          line-height: 21px;
+          display: inline-block;
+          vertical-align: top;
+          cursor: pointer;
+          margin-left: 4px;
+        }
+
+        input[type="checkbox"]:not(.switch) {
+          border-radius: 7px;
+        }
+        input[type="checkbox"]:not(.switch):after {
+          width: 5px;
+          height: 9px;
+          border: 2px solid var(--active-inner);
+          border-top: 0;
+          border-left: 0;
+          left: 7px;
+          top: 4px;
+          transform: rotate(var(--r, 20deg));
+        }
+        input[type="checkbox"]:not(.switch):checked {
+          --r: 43deg;
+        }
+        input[type="checkbox"].switch {
+          width: 38px;
+          border-radius: 11px;
+        }
+        input[type="checkbox"].switch:after {
+          left: 2px;
+          top: 2px;
+          border-radius: 50%;
+          width: 15px;
+          height: 15px;
+          background: var(--ab, var(--border));
+          transform: translateX(var(--x, 0));
+        }
+        input[type="checkbox"].switch:checked {
+          --ab: var(--active-inner);
+          --x: 17px;
+        }
+        input[type="checkbox"].switch:disabled:not(:checked):after {
+          opacity: 0.6;
+        }
+
+        input[type="radio"] {
+          border-radius: 50%;
+        }
+        input[type="radio"]:after {
+          width: 19px;
+          height: 19px;
+          border-radius: 50%;
+          background: var(--active-inner);
+          opacity: 0;
+          transform: scale(var(--s, 0.7));
+        }
+        input[type="radio"]:checked {
+          --s: 0.5;
         }
       }
-
-
-      .img-flag {
-    height: 40px;
-}
-
     </style>
-    <link
-      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
-      rel="stylesheet"
-    />
   </head>
 
   <body>
@@ -807,6 +817,39 @@
                 </ul>
               </div>
             </li>
+
+            <li class="nav-item active">
+              <a
+                class="nav-link"
+                data-toggle="collapse"
+                href="#Destinations"
+                aria-expanded="false"
+                aria-controls="Destinations"
+              >
+                <i class="icon-bar-graph menu-icon"></i>
+                <span class="menu-title">Destinations</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="Destinations">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      href="./../destinations/destinations.html"
+                      >Destinations</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      href="./../destinations/addDestination.html"
+                      >Add destination</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+
             <li class="nav-item">
               <a
                 class="nav-link"
@@ -835,7 +878,7 @@
               </div>
             </li>
 
-            <li class="nav-item active">
+            <li class="nav-item">
               <a
                 class="nav-link"
                 data-toggle="collapse"
@@ -858,8 +901,8 @@
                     <a
                       class="nav-link"
                       href="./../itineraries/addItinerary.html"
-                      >Add itinerary</a
-                    >
+                      >Add
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -1008,474 +1051,196 @@
           </ul>
         </nav>
 
-        <div class="" style="height: 100%; width: 100%">
-          <div class="row mt-3">
-            <div class="col-md-6"></div>
-          </div>
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////   start   ////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
+        <!-- ////////////////////// -->
 
-          <!-- /////////////   start  ///////////// -->
-          <!-- /////////////   start  ///////////// -->
-          <!-- /////////////   start  ///////////// -->
-          <!-- /////////////   start  ///////////// -->
-          <!-- /////////////   start  ///////////// -->
-          <!-- /////////////   start  ///////////// -->
-          <!-- /////////////   start  ///////////// -->
-          <!-- /////////////   start  ///////////// -->
-          <!-- /////////////   start  ///////////// -->
-          <!-- /////////////   start  ///////////// -->
-          <!-- /////////////   start  ///////////// -->
-          <!-- /////////////   start  ///////////// -->
-          <!-- /////////////   start  ///////////// -->
-          <!-- /////////////   start  ///////////// -->
-          <!-- /////////////   start  ///////////// -->
-
-          <div class="col-lg-12 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">Add new Itinerary :</h4>
-                <p class="card-description">Itinerary data</p>
-                <form class="forms-sample">
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Add new destination :</h4>
+              <p class="card-description">Destination data</p>
+              <form class="forms-sample">
+                <label for="exampleInputName1"
+                  >Destination name
+                  <span class="text-muted small">(English)</span></label
+                >
+                <div class="form-group row name-english">
+                  <div class="d-flex flex-row col-md-10">
+                    <input
+                      type="text"
+                      class="form-control mr-4"
+                      placeholder="Name"
+                    />
+                    <button
+                      type="button"
+                      class="text-center text-success border border-success rounded-lg btn btnHoverGreen"
+                      onclick="(()=>{
+                          let arDiv = document.querySelector(`.arabicNameDiv`)
+                          arDiv.classList.add(`animate__animated`,`animate__fadeIn`,`show-animation`)
+                          arDiv.classList.remove(`d-none`)
+                        })()"
+                    >
+                      <span>+</span>
+                    </button>
+                  </div>
+                </div>
+                <!-- ////////////////arabic name//////////////////////// -->
+                <div class="d-none arabicNameDiv">
                   <label for="exampleInputName1"
-                    >Itinerary name
-                    <span class="text-muted small">(English)</span></label
+                    >Destination name
+                    <span class="text-muted small">(arabic)</span></label
                   >
                   <div class="form-group row name-english">
                     <div class="d-flex flex-row col-md-10">
                       <input
                         type="text"
                         class="form-control mr-4"
-                        id="exampleInputName1"
+                        id="nameAr"
                         placeholder="Name"
                       />
-                      <button
-                        type="button"
-                        class="text-center text-success border border-success rounded-lg btn btnHoverGreen"
-                        id="addNameDifferentLanguage"
-                        onclick="(()=>{
-                            let descDiv = document.querySelector(`.arNameDiv`)
-                            descDiv.classList.add(`animate__animated`,`animate__fadeIn`,`show-animation`)
-                            descDiv.classList.remove(`d-none`)
-                          })()"
-                      >
-                        <span>+</span>
-                      </button>
                     </div>
                   </div>
-
-                  <!-- //////////////////////////////////////// -->
-                  <!-- ///////////////// arabic input/////////////////////// -->
-
-                  <div class="d-none arNameDiv">
-                    <label for="exampleInputName1"
-                      >Itinerary name
-                      <span class="text-muted small">(Arabic)</span></label
-                    >
-                    <div class="form-group row name-english">
-                      <div class="d-flex flex-row col-md-10">
-                        <!-- ///////////////// arabic input/////////////////////// -->
-
-                        <input
-                          type="text"
-                          class="form-control mr-4"
-                          placeholder=" Arabic name"
-                        />
+                </div>
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <div>
+                  <label for="suitable for"> Destination type :</label>
+                  <div class="col-md-6 ml-5">
+                    <div class="form-group ml-5">
+                      <div class="form-check form-check-success">
+                        <label class="form-check-label">
+                          <input
+                            type="radio"
+                            class="form-check-input"
+                            name="optionsRadios"
+                            id="optionsRadios1"
+                            value="country"
+                          />
+                          Country
+                        </label>
+                      </div>
+                      <div class="form-check form-check-success">
+                        <label class="form-check-label">
+                          <input
+                            type="radio"
+                            class="form-check-input"
+                            name="optionsRadios"
+                            id="optionsRadios2"
+                            value="city"
+                          />
+                          City
+                        </label>
                       </div>
                     </div>
                   </div>
-                  <!-- //////////////////////////////////////// -->
-                  <!-- //////////////////////////////////////// -->
-
-                  <!-- <select id="mySelect"></select> -->
-
-                  <div
-                    class="mt-lg-5 d-flex flex-column border-success pt-2 customDivCountries"
-                    style="
-                      width: 301px;
-                      border: 1px solid #3fb79f;
-                      border-radius: 5px;
-                    "
-                  >
-                    <label class="ml-2 customLabel">Choose countries:</label>
-                    <select id="mySelect" multiple>
-                      <option value="Russia_Id">Russia</option>
-                      <option value="Alabama_Id">Alabama</option>
-                      <option value="Wyoming_Id">Wyoming</option>
-                      <option value="America_Id">America</option>
-                      <option value="Canada_Id">Canada</option>
-                      <option value="Russia_Id">Russia</option>
-                      <option value="Alabama_Id">Alabama</option>
-                      <option value="Wyoming_Id">Wyoming</option>
-                      <option value="America_I">America</option>
-                      <option value="CanadaId">Canada</option>
-                      <option value="RussiaId">Russia</option>
-                      <option value="AlabamaId">Alabama</option>
-                      <option value="WyomingId">Wyoming</option>
-                      <option value="AmericaId">America</option>
-                      <option value="CanadaId">Canada</option>
-                    </select>
-                  </div>
-
-                  <!-- the value of the countries will be in this
-                     input seperated by commas like 12,34,23 -->
-                  <input type="hidden" id="COUNTRY" value="" />
-
-                  <!-- //////////////////////////////////////// -->
-                  <!-- //////////////////////////////////////// -->
-
-                  <div
-                    class="mt-4 d-flex flex-column border-success pt-2 customDivCountries"
-                    style="
-                      width: 301px;
-                      border: 1px solid #3fb79f;
-                      border-radius: 5px;
-                    "
-                  >
-                    <label class="ml-2 customLabel">Choose cities:</label>
-                    <select id="mySelectCity" multiple>
-                      <option value="RussiaId">Russia</option>
-                      <option value="AlabamaId">Alabama</option>
-                      <option value="WyomingId">Wyoming</option>
-                      <option value="AmericaId">America</option>
-                      <option value="CanadaId">Canada</option>
-                      <option value="RussiaId">Russia</option>
-                      <option value="AlabamaId">Alabama</option>
-                      <option value="WyomingId">Wyoming</option>
-                      <option value="AmericaI">America</option>
-                      <option value="CanadaId">Canada</option>
-                      <option value="RussiaId">Russia</option>
-                      <option value="AlabamaId">Alabama</option>
-                      <option value="WyomingId">Wyoming</option>
-                      <option value="AmericaId">America</option>
-                      <option value="CanadaId">Canada</option>
-                    </select>
-                  </div>
-
-                  <!-- the value of the cities will be in this
-                     input seperated by commas like 12,34,23 -->
-                  <input type="hidden" id="CITY" value="" />
-
-                  <!-- //////////////////////////////////////// -->
-
-                  <hr class="customHr" />
-
-                  <div
-                    class="mt-4 d-flex flex-column border-success pt-2 customDivCountries"
-                    style="
-                      width: 301px;
-                      border: 1px solid #3fb79f;
-                      border-radius: 5px;
-                      background-color: #1f6e8c;
-                    "
-                  >
-                    <label class="ml-2 customLabel">Itinerary type:</label>
-                    <select id="mySelectType" multiple>
-                      <option value="1">car Road Trip Itinerary</option>
-                      <option value="2">Itinerary with Car</option>
-                      <option value="3">Hiking Itinerary</option>
-                      <option value="4">Campervans Itinerary</option>
-                      <option value="5">Christmas Itinerary</option>
-                      <option value="6">Honeymoon Itinerary</option>
-                      <option value="7">Itinerary With Kids</option>
-                      <option value="8">Solo/Couple Traveler(s)</option>
-                      <option value="9">America</option>
-                      <option value="10">Canada</option>
-                      <option value="11">Russia</option>
-                      <option value="12">Alabama</option>
-                      <option value="13">Wyoming</option>
-                      <option value="14">America</option>
-                      <option value="15">Canada</option>
-                    </select>
-                  </div>
-                  <!-- the value of the types (by id) will be in this
-                   input seperated by commas like 12,34,23 -->
-                  <input type="hidden" id="TYPE" value="" />
-
-                  <!-- //////////////////////////////////////// -->
-                  <!-- //////////////////////////////////////// -->
-                  <!-- //////////////////////////////////////// -->
-                  <!-- //////////////////////////////////////// -->
-                  <!-- //////////////////////////////////////// -->
-
-                  <div
-                    class="mt-4 d-flex flex-column border-success pt-2 customDivCountries"
-                    style="
-                      width: 301px;
-                      border: 1px solid #3fb79f;
-                      border-radius: 5px;
-                      background-color: #1f6e8c;
-                    "
-                  >
-                    <label class="ml-2 customLabel">Season for: </label>
-                    <select id="mySelectSeason" multiple>
-                      <!--   value=ID  -->
-                      <option value="1">All Seasons</option>
-                      <option value="2">Spring</option>
-                      <option value="3">Summer</option>
-                      <option value="4">Fall</option>
-                      <option value="5">Winter</option>
-                    </select>
-                  </div>
-
-                  <!-- ///// here goes the IDs of seasons like 1,7,4,9,6  ////// -->
-                  <input type="hidden" id="SEASON" value="" />
-
-                  <!-- //////////////   vtext editor area qulli  //////////////////////// -->
-                  <hr class="customHr" />
-
-
-                  <!-- //////////////////////////////////////// -->
-                  <!-- //////////////////////////////////////// -->
-
-                  <label for="exampleTextarea1" class="mt-4"
-                    >Discription<span class="text-muted small">
-                      (English)</span
-                    ></label
-                  >
-                  <div
-                    class="form-group d-flex flex-row justify-content-lg-start descdiv"
-                  >
-                    <textarea
-                      class="form-control col-10 mr-2"
-                      id="exampleTextarea1"
-                      rows="8"
-                    >
-                    </textarea>
-                    <div class="m-auto">
-                      <button
-                        type="button"
-                        class="text-center text-success border border-success rounded-lg btn btnHoverGreen"
-                        style="height: 70px; width: 70px"
-                        id="addDescByDifferentLanguage"
-                        onclick="(()=>{
-                          let descDiv = document.querySelector(`.arDescDiv`)
-                          descDiv.classList.add(`animate__animated`,`animate__fadeIn`,`show-animation`)
-                          descDiv.classList.remove(`d-none`)
-                        })()"
-                      >
-                        <span>+</span>
-                      </button>
-                    </div>
-                  </div>
-
-                  <!-- ////////////  arabic description  /////////// -->
-
-                  <div class="d-none arDescDiv">
-                    <label for="exampleTextarea1" class="mt-4"
-                      >Discription<span class="text-muted small">
-                        (Arabic)</span
-                      ></label
-                    >
-                    <div
-                      class="form-group d-flex flex-row justify-content-lg-start"
-                    >
-                      <textarea
-                        class="form-control col-10"
-                        id="arabicDesc"
-                        rows="8"
-                      >
-                      </textarea>
-                    </div>
-                  </div>
-
-                  <!-- //////////////////////////////////////// -->
-                  <!-- //////////////////////////////////////// -->
-
-                  <div class="d-flex flex-column">
-                    <label for=""
-                      >Important Information & Tips
-                      <span class="text-muted">(English)</span> :</label
-                    >
-                    <div id="quillEditor"></div>
-
-                    <div class="m-auto">
-                      <button
-                        type="button"
-                        class="mt-3 ml-5 text-center text-success border border-success rounded-lg btn btnHoverGreen"
-                        style="height: 70px; width: 70px"
-                        id="addDescByDifferentLanguage"
-                        onclick="(()=>{
-                            let descDiv = document.querySelector(`.arContentDiv`)
-                            descDiv.classList.add(`animate__animated`,`animate__fadeIn`,`show-animation`)
-                            descDiv.classList.remove(`d-none`)
-                          })()"
-                      >
-                        <span>+</span>
-                      </button>
-                    </div>
-
-                    <!-- this hidden input will contain the value of the text editor -->
-                    <input
-                      type="hidden"
-                      class="d-none"
-                      name="quillContent"
-                      id="quillContentInput"
-                    />
-                  </div>
-
-                  <!-- //////////////////////////////////////// -->
-                  <!-- //////////////////////////////////////// -->
-                  <!-- //////////////////////////////////////// -->
-                  <!-- //////////////////////////////////////// -->
-
-                  <div class="d-none arContentDiv">
-                    <label for=""
-                      >Important Information & Tips
-                      <span class="text-muted">(Arabic)</span> :</label
-                    >
-                    <div id="quillEditorArabic" style="height: 300px"></div>
-
-                    <!-- this hidden input will contain the value of the text editor Arabic-->
-                    <input
-                      type="hidden"
-                      name="quillContent"
-                      id="quillContentInputArabic"
-                    />
-                  </div>
-                  <hr class="customHr" />
-
-
-                  <!-- //////////////////////////////////////// -->
-
-                  <br />
-                  <div class="form-group" style="width: 80%">
-                    <label>Head image</label>
-                    <input
-                      type="file"
-                      name="img[]"
-                      class="file-upload-default"
-                    />
-                    <div class="input-group col-xs-12">
-                      <input
-                        type="text"
-                        class="form-control file-upload-info"
-                        disabled
-                        placeholder="Upload Image"
-                      />
-                      <span class="input-group-append">
-                        <button
-                          class="file-upload-browse btn-inverse-success btn-fw btn customHover"
-                          type="button"
-                        >
-                          Upload
-                        </button>
-                      </span>
-                    </div>
-                  </div>
-
-                  <br />
-                  <div class="form-group" style="width: 80%">
-                    <label>Featured image</label>
-                    <input
-                      type="file"
-                      name="img[]"
-                      class="file-upload-default"
-                    />
-                    <div class="input-group col-xs-12">
-                      <input
-                        type="text"
-                        class="form-control file-upload-info"
-                        disabled
-                        placeholder="Gallery Image"
-                      />
-                      <span class="input-group-append">
-                        <button
-                        class="file-upload-browse btn-inverse-success btn-fw btn customHover"
-                        type="button"
-                        >
-                          Upload
-                        </button>
-                      </span>
-                    </div>
-                  </div>
-                  <hr class="customHr" />
-
-                  <!-- /////////////////////////     recommendations   //////////////////////// -->
-
-
-                  <div
-                    class="mt-4 mb-4 d-flex flex-column border-success pt-2 customDivCountries"
-                    style="
-                      width: 301px;
-                      border: 1px solid #3fb79f;
-                      border-radius: 5px;
-                      background-color: #2E8A99;
-                    "
-                  >
-                    <label class="ml-2 customLabel"
-                      >Recommendation Hotels:</label
-                    >
-                    <select id="mySelectRecHotels" multiple>
-                      <!--   value=ID  -->
-                <option value="1" data-img-url="../../images/faces/face28.jpg">hotel 1 <span>-</span> <span>city</span></option>
-                <option value="2" data-img-url="../../images/faces/face28.jpg">hotel 2 <span>-</span> <span>city</span></option>
-                <option value="3" data-img-url="../../images/faces/face28.jpg">hotel 3 <span>-</span> <span>city</span></option>
-                <option value="4" data-img-url="../../images/faces/face28.jpg">hotel 4 <span>-</span> <span>city</span></option>
-                <option value="5" data-img-url="../../images/faces/face28.jpg">hotel 5 <span>-</span> <span>city</span></option>
-                <option value="6" data-img-url="../../images/faces/face28.jpg">hotel 6 <span>-</span> <span>city</span></option>
-                    </select>
-                    <!-- ///// here goes the IDs of hotels like 1,7,4,9,6  ////// -->
-                    <input 
-                    type="hidden"
-                    id="HOTELS" value="" />
-                  </div>
-
-                  <!-- ///////////////////////////////// -->
-                  <!-- ///////////////////////////////// -->
-                  <!-- ///////////////////////////////// -->
-
-                  <div
-                  class="mt-4 mb-4 d-flex flex-column border-success pt-2 customDivCountries"
-                  style="
-                    width: 301px;
-                    border: 1px solid #3fb79f;
-                    border-radius: 5px;
-                    background-color: #2E8A99;
-                  "
-                >
-                  <label class="ml-2 customLabel"
-                    >Recommendation Restaurants: </label
-                  >
-                  <select id="mySelectRecRestaurants" multiple>
-                    <!--   value=ID  -->
-              <option value="1" data-img-url="../../images/faces/face28.jpg">restaurant 1 <span>-</span> <span>city</span></option>
-              <option value="2" data-img-url="../../images/faces/face28.jpg">restaurant 2 <span>-</span> <span>city</span></option>
-              <option value="3" data-img-url="../../images/faces/face28.jpg">restaurant 3 <span>-</span> <span>city</span></option>
-              <option value="4" data-img-url="../../images/faces/face28.jpg">restaurant 4 <span>-</span> <span>city</span></option>
-              <option value="5" data-img-url="../../images/faces/face28.jpg">restaurant 5 <span>-</span> <span>city</span></option>
-              <option value="6" data-img-url="../../images/faces/face28.jpg">restaurant 6 <span>-</span> <span>city</span></option>
-                  </select>
-                  <!-- ///// here goes the IDs of hotels like 1,7,4,9,6  ////// -->
-                  <input 
-                  type="hidden"
-                  id="RESTAURANTS" value="" />
                 </div>
 
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
 
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
 
-                  <!-- ///////////////////////////////// -->
-                  <!-- ///////////////////////////////// -->
-                  <!-- ///////////////////////////////// -->
-                  <hr class="customHr" />
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
+                <!-- //////////////////////////////////////// -->
 
-                  <div class="d-flex flex-row mt-5">
-                    <button type="submit" class="btn btn-primary mr-2">
-                      publish
-                    </button>
-                    <button class="btn btn-light btn-facebook">
-                      save as a draft
-                    </button>
+                <div class="form-group mt-5">
+                  <ul class="p-0 mt-5">
+                    <li style="list-style-type: none">
+                      <label for="s2">Set as popular :</label>
+                      <input id="s2" type="checkbox" class="switch ml-3" />
+                    </li>
+                  </ul>
+                </div>
 
-                    <button class="btn btn-light">Cancel</button>
+                <!-- ////////////  arabic description  /////////// -->
+
+                <br />
+                <div class="form-group" style="width: 81%">
+                  <label>Featured image</label>
+                  <input type="file" name="img[]" class="file-upload-default" />
+                  <div class="input-group col-xs-12">
+                    <input
+                      type="text"
+                      class="form-control file-upload-info"
+                      disabled
+                      placeholder="Upload Image"
+                    />
+                    <span class="input-group-append"
+                    >
+                    <!-- style="color: #303736;" -->
+                    <button
+                    class="file-upload-browse btn-inverse-success btn-fw btn customHover"
+                    type="button"
+                      >
+                        Upload
+                      </button>
+                    </span>
                   </div>
-                </form>
-              </div>
+                </div>
+
+                <br />
+                <label>URL :</label>
+                <div class="form-group row">
+                  <div class="d-flex flex-row col-md-10">
+                    <input
+                      type="text"
+                      class="form-control mr-4"
+                      placeholder="URL"
+                    />
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row mt-5">
+                    <div class="d-flex flex-row mt-5">
+                  <button type="submit" class="btn btn-primary mr-2">
+                    publish
+                  </button>
+                  <button class="btn btn-light btn-facebook">
+                    save as a draft
+                  </button>
+
+                  <button class="btn btn-light">Cancel</button>
+                </div>
+            </div>
+              </form>
             </div>
           </div>
-
-          <!-- ///////////////////////////////////// -->
         </div>
-
-        <!-- ////////////////////// -->
       </div>
       <!-- page-body-wrapper ends -->
     </div>
@@ -1496,93 +1261,27 @@
     <!-- Custom js for this page-->
     <script src="../../js/chart.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
     <!-- <script src="./attraction.js"></script> -->
-
     <script>
-      var quill = new Quill("#quillEditor", {
-        theme: "snow",
-        modules: {
-          toolbar: [
-            [{ header: [1, 2, 3, 4, 5, 6, false] }],
-            ["bold", "italic", "underline"],
-            [{ align: [] }],
-            ["link"],
-          ],
-        },
-      });
-
-      quill.on("text-change", function () {
-        var content = quill.root.innerHTML;
-        document.getElementById("quillContentInput").value = content;
-      });
       $(document).ready(function () {
-        $("#mySelect")
-          .select2()
-          .on("change", function () {
-            var selectedValue = $(this).val();
-            console.log(selectedValue);
-            document.querySelector(`#COUNTRY`).value = selectedValue;
-          });
-
-        $("#mySelectCity")
-          .select2()
-          .on("change", function () {
-            var selectedValue = $(this).val();
-            console.log(selectedValue);
-            document.querySelector(`#CITY`).value = selectedValue;
-          });
-        $("#mySelectType")
-          .select2()
-          .on("change", function () {
-            var selectedValue = $(this).val();
-            console.log(selectedValue);
-            document.querySelector(`#TYPE`).value = selectedValue;
-          });
-        $("#mySelectSeason")
-          .select2()
-          .on("change", function () {
-            var selectedValue = $(this).val();
-            console.log(selectedValue);
-            document.querySelector(`#SEASON`).value = selectedValue;
-          });
-        $("#mySelectRecHotels")
-          .select2({
-            templateResult: formatState,
-            templateSelection: formatState,
-          })
-          .on("change", function () {
-            var selectedValue = $(this).val();
-            document.querySelector(`#HOTELS`).value = selectedValue;
-          });
-        $("#mySelectRecRestaurants")
-          .select2({
-            templateResult: formatState,
-            templateSelection: formatState,
-          })
-          .on("change", function () {
-            var selectedValue = $(this).val();
-            document.querySelector(`#RESTAURANTS`).value = selectedValue;
-          });
-
-        function formatState(state) {
-          if (!state.id) {
-            return state.text;
-          }
-          var imgUrl = $(state.element).data("img-url");
-          var $state = $(
-            '<span><img src="' +
-              imgUrl +
-              '" class="img-flag" /> ' +
-              state.text +
-              "</span>"
-          );
-          return $state;
-        }
+        var dataTable = $("#restaurantTable").DataTable();
       });
+      function confirmDelete() {
+        var result = confirm("Are you sure you want to delete this item?");
+        if (result) {
+          // User clicked "OK" - proceed with the deletion
+          deleteItem();
+        } else {
+          // User clicked "Cancel" - do nothing
+        }
+      }
 
-      ////////////////////////////////////////////////
+      function deleteItem() {
+        // Code to delete the item goes here
+        alert("Item deleted successfully!");
+      }
+
       const addArLang = (buttonId, siblingSelector, content) => {
         $(`#${buttonId}`).one("click", () => {
           $(content).insertAfter(`${siblingSelector}`);
@@ -1609,11 +1308,6 @@
         }
       }
 
-      function containsWord(sentence, word) {
-        const regex = new RegExp(`\\b${word}\\b`, "i");
-        return regex.test(sentence);
-      }
-
       function onChooseCity(
         e,
         dropDownId,
@@ -1621,51 +1315,14 @@
         hiddenInputName,
         hiddenInputId
       ) {
-        // COUNTRY_CONTAINER
-        const name = e.childNodes[0].nodeValue.trim();
+        const Name = e.childNodes[0].nodeValue.trim();
         const Id = e.childNodes[1].textContent;
-        // document.getElementById(dropDownId).classList.remove("show");
-        // document.querySelector(btnSelector).innerHTML = Name;
-        if (
-          !containsWord(
-            document.querySelector(`#${hiddenInputName}`).value,
-            name
-          )
-        ) {
-          document.querySelector(`#${hiddenInputName}`).value = `${
-            document.querySelector(`#${hiddenInputName}`).value
-          },${name}`;
-        }
+        document.getElementById(dropDownId).classList.remove("show");
+        document.querySelector(btnSelector).innerHTML = Name;
+        document.querySelector(`#${hiddenInputName}`).value = Name;
         document.querySelector(`#${hiddenInputId}`).value = Id;
       }
-
-      let editorContent = `
-      <div class="animate__animated animate__fadeIn show-animation"> 
-        <label>Content<span class="text-muted small">(Arabic)</span> :</label>
-        <div id="quillEditorArabic"></div>
-      </div>`;
-
-      //   addArLang(`addContentLanguage`, `.sibling`, editorContent, () => {
-      var quillAr = new Quill("#quillEditorArabic", {
-        theme: "snow",
-        modules: {
-          toolbar: [
-            [{ header: [1, 2, 3, 4, 5, 6, false] }],
-            ["bold", "italic", "underline"],
-            [{ align: [] }],
-            ["link"],
-          ],
-        },
-      });
-
-      quillAr.on("text-change", function () {
-        let contentAr = quillAr.root.innerHTML;
-        document.getElementById("quillContentInputArabic").value = contentAr;
-      });
-      //   });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-
     <!-- End custom js for this page-->
   </body>
 </html>

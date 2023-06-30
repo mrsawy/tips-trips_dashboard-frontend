@@ -138,9 +138,15 @@
         cursor: pointer;
       }
 
-      .dropbtn:hover {
-        background-color: #359481;
-      }
+
+
+      span>button.customHover.btn-fw.btn{
+      color: #152925;
+    }
+      .dropbtn:hover,.customHover:hover {
+      background-color: #359481 !important;
+      color: white !important;
+    }
 
       #myInput {
         box-sizing: border-box;
@@ -1205,8 +1211,7 @@
                       />
                       <span class="input-group-append">
                         <button
-                          class="file-upload-browse btn btn-primary"
-                          type="button"
+                        class="file-upload-browse btn-inverse-success btn-fw btn customHover"                          type="button"
                         >
                           Upload
                         </button>
@@ -1231,8 +1236,7 @@
                       />
                       <span class="input-group-append">
                         <button
-                          class="file-upload-browse btn btn-primary"
-                          type="button"
+                        class="file-upload-browse btn-inverse-success btn-fw btn customHover"                          type="button"
                         >
                           Upload
                         </button>
