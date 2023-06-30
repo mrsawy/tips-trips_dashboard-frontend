@@ -28,6 +28,13 @@
       type="text/css"
       href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"
     />
+
+
+    <style>
+        .dataTables_wrapper .dataTables_length select{
+            height: 33px;
+        }
+    </style>
   </head>
 
   <body>
@@ -610,7 +617,7 @@
                     <li class="nav-item">
                       <a
                         class="nav-link"
-                        href="./../articles/addArticles.html"
+                        href="./../articles/addArticle.html"
                         >Add article</a
                       >
                     </li>
@@ -777,13 +784,16 @@
                       class="form-inline dataTables_filter d-flex flex-row justify-content-between"
                       id="hotelTable_filter"
                     >
-                      <label class="m-4" for="exampleFormControlSelect1"
+                    <div class="d-flex justify-content-center align-items-center">
+
+                        <label class="m-4" for="exampleFormControlSelect1"
                         >filter by</label
                       >
                       <select class="form-control" id="FormControlSelect1">
                         <option>published</option>
                         <option>drafted</option>
                       </select>
+                    </div>
                       <a
                         class="nav-link"
                         href="./../attraction/addAttraction.html"
